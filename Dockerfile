@@ -31,12 +31,20 @@ ENV MOTD "QHost Containerized Server"
 ENV PVP "true"
 ENV SPAWN-MONSTERS "true"
 ENV MAXPLAYERS "40"
+ENV WHITELIST "false"
+ENV GAMEMODE "survival"
+ENV DIFFICULTY "easy"
+ENV HARDCORE "false"
+ENV COMMANDBLOCK "false"
+ENV SPAWN-NPC "true"
+ENV FLIGHT "false"
+ENV ANIMALS "true"
+ENV ONLINE "true"
+ENV SEED ""
 
 RUN java -Xmx1G -Xms1G -jar server.jar nogui
 RUN sed -i 's/false/true/g' eula.txt
-RUN sed -i 's/A Minecraft Server/QHost Containerized Server/g' server.properties
 
-RUN touch setup.sh
-RUN echo "echo $MAXPLAYERS" > setup.sh
+ADD setup.sh /tmp/setup.sh
 
-#CMD cp /tmp/* /server/ -rf && cd /server && screen -S server -m java -Xmx${MAXRAM} -Xms${MINRAM} -jar server.jar nogui
+#CMD sh setup.sh && cp /tmp/* /server/ -rf && cd /server && screen -S server -m java -Xmx${MAXRAM} -Xms${MINRAM} -jar server.jar nogui
