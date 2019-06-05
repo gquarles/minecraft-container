@@ -2,6 +2,7 @@ import docker
 
 client = docker.from_env()
 
-container = client.containers.get('46ac1ab6b97b')
+container = client.containers.list()
+print(container)
 
-container.exec_run('screen -S server -p 0 -X stuff "say hi^M"')
+#container.exec_run('screen -S server -p 0 -X stuff "say hi^M"')
