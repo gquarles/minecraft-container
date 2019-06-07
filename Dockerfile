@@ -47,4 +47,4 @@ RUN sed -i 's/false/true/g' eula.txt
 
 ADD setup.sh /tmp/setup.sh
 
-CMD sh setup.sh && cp /tmp/* /server/ -rf && cd /server && screen -S server -m java -Xmx${MAXRAM} -Xms${MINRAM} -jar spigot.jar && screen -S server -X quit
+CMD sh setup.sh && cp /tmp/* /server/ -rf && cd /server && sh setup.sh && screen -S server -m java -Xmx${MAXRAM} -Xms${MINRAM} -jar spigot.jar && screen -S server -X quit
