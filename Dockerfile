@@ -23,7 +23,7 @@ EXPOSE 25565 25575
 
 WORKDIR /tmp
 
-RUN wget https://launcher.mojang.com/v1/objects/808be3869e2ca6b62378f9f4b33c946621620019/server.jar
+RUN wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
 
 ENV MAXRAM 2G
 ENV MINRAM 1G
