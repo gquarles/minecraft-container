@@ -16,6 +16,7 @@ RUN apk add --no-cache -U \
   tzdata \
   rsync \
   nano \
+  python3 \
   python python-dev py2-pip \
   screen
 
@@ -23,7 +24,14 @@ EXPOSE 25565 25575
 
 WORKDIR /tmp
 
-RUN wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
+RUN python3 -m pip install requests
+RUN python3 -m pip install beautifulsoup4
+
+ADD download.py /tmp/download.py
+
+RUN python3 download.py
+
+#RUN wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
 
 ENV MAXRAM 2G
 ENV MINRAM 1G
